@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const adminController = require('../controllers/admin-controller')
+const { authenticated } = require('../middleware/auth')
 
 
 router.get('/hello', (req, res) => {
@@ -20,5 +21,9 @@ router.post('/sortnum', (req, res) => {
 })
 
 router.post('/login', adminController.login)
+
+router.get('/is_auth', authenticated, (req, res) => {
+   res.json('true')
+})
 
 module.exports = router
