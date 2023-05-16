@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const adminController = require('../controllers/admin-controller')
 
 
 router.get('/hello', (req, res) => {
@@ -17,5 +18,7 @@ router.post('/sortnum', (req, res) => {
   sortnum.sort((a, b) => a - b)
   return res.json({ sortnum })
 })
+
+router.post('/login', adminController.login)
 
 module.exports = router
